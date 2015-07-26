@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Goomy Clicker 3: REACTion</title>
+
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="style/gc.css" />
+
+    <script src="react/react-with-addons.js" type="text/javascript"></script>
+    <script src="react/JSXTransformer.js" type="text/javascript"></script>
+    <script src="lib/classnames.js" type="text/javascript"></script>
+
+    <script src="gc.js" type="text/javascript"></script>
+
+    <script src="react/classes/GoomyClickerApp.react.js" type="text/jsx"></script>
+    <script src="react/classes/GoomyIndicator.react.js" type="text/jsx"></script>
+    <script src="react/classes/GoomyPane.react.js" type="text/jsx"></script>
+    <script src="react/classes/GreatGoomy.react.js" type="text/jsx"></script>
+    <script src="react/classes/PlusMarker.react.js" type="text/jsx"></script>
+    <script src="react/classes/StatsPane.react.js" type="text/jsx"></script>
+</head>
+
+<body>
+<div id="gamebox">
+</div>
+</body>
+
+<script type="text/jsx">
+    var update_time = new Date();
+
+    setInterval(function () {
+        var new_update_time = new Date();
+        var delta_ms = new_update_time.getTime() - update_time.getTime();
+        update_time.setTime(new_update_time.getTime());
+
+        basedata.update(delta_ms);
+
+        React.render(
+            <GoomyClickerApp
+                data={basedata}
+                onUpdate={onUpdate}
+            />
+        , document.getElementById("gamebox"));
+    }, 10);
+</script>
+
+</html>

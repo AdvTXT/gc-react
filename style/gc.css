@@ -1,0 +1,99 @@
+html, body{
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+
+    font-family: Hind, PT Sans, Arial, sans-serif;
+    background-color: #200c2d;
+}
+
+#gamebox{
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+
+
+div.goomy-pane{
+    text-align: center;
+    width: 336px;
+    margin: auto;
+    position: relative;
+}
+
+div.stats-pane{
+    text-align: center;
+}
+
+img.great-goomy{
+    position: relative;
+    height: 480px;
+    top: 0;
+    margin-bottom: 0;
+    transition: 0.03s linear;
+    cursor: pointer;
+}
+
+img.great-goomy.pressed{
+    height: 460px;
+    top: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+p.goomy-count{
+    margin: 0;
+    font-size: 200%;
+    font-family: Inconsolata, Consolas, monospace;
+}
+
+
+.plus-marker-container{
+    position: absolute;
+    width: 100%; height: 100%;
+    top: 0px; left: 0px;
+    pointer-events: none;
+}
+
+.plus-marker{
+    position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.plusMarker-leave{
+    opacity: 1;
+}
+
+.plusMarker-leave.plusMarker-leave-active{
+    opacity: 0;
+    transition: all 1.0s ease-out;
+}
+
+
+.plusMarker-leave > .movable{
+    position: absolute;
+    top: 0px;
+    left: -75px;
+    text-shadow: 0 0 4px black;
+    width: 150px;
+    text-align: center;
+    font-size: 150%;
+}
+
+.plusMarker-leave.plusMarker-leave-active > .movable{
+    top: -100px;
+    transition: all 1.0s ease-out;
+}
