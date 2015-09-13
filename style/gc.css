@@ -14,6 +14,19 @@ html, body{
 
 
 
+div.generator{
+    width: 260px;
+    height: 120px;
+    padding: 8px 20px;
+    background-color: #121212;
+    border: 1px solid #e9e9e9;
+}
+
+div.generator p{
+    font-size: 75%;
+    margin: 0;
+}
+
 div.goomy-pane{
     text-align: center;
     width: 336px;
@@ -24,6 +37,7 @@ div.goomy-pane{
 div.stats-pane{
     text-align: center;
 }
+
 
 img.great-goomy{
     position: relative;

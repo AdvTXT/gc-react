@@ -39,7 +39,7 @@ var GoomyPane = React.createClass({
 
     _onClick: function(x, y) {
         this.handleAdd(x, y);
-        this.props.sendMessage({type: "click_on_goomy"});
+        this.props.onUpdate({type: "click_on_goomy"});
     },
 
     render: function() {
