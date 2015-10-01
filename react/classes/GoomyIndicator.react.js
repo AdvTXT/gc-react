@@ -8,7 +8,7 @@ var GoomyIndicator = React.createClass({
     render: function() {
         return (
             <div className="stats-pane">
-                <p className="goomy-count">{Math.floor(this.props.goomies)} Goomies</p>
+                <p className="goomy-count">{reprnum(Math.floor(this.props.goomies))} Goomies</p>
                 {this.props.gps} Goomies per second
             </div>
         );

@@ -57,9 +57,10 @@ Generator.prototype.sell = function(n) {
     var total_refund = 0;
     var new_count = this.count;
 
-    for (var i = 1; i < n; ++i) {
+    for (var i = 0; i < n; ++i) {
         new_count -= 1;
         total_refund += this.getCost(new_count) * 0.25;
+		// we're pretty stingy, you only get 25% of the purchase price back.
     }
 
     this.count = new_count;

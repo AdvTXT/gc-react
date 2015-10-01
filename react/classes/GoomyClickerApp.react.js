@@ -19,6 +19,11 @@ var GoomyClickerApp = React.createClass({
                     generators = {this.props.generators}
                     onUpdate = {this.props.onUpdate}
                 />
+				<StatsPane
+					goomies = {this.props.data["goomies"]}
+					gps = {this.props.data["gps"]}
+					playtime = {this.props.data["playtime"]}
+				/>
             </div>
         );
     },
