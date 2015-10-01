@@ -15,7 +15,7 @@ var GoomyIndicator = React.createClass({
             <div className="stats-pane">
                 <p className="goomy-count">
 					{reprnum(Math.floor(this.props.goomies), "long")}
-					<img src="/img/favicon.png" />
+					<img src="img/favicon.png" />
 				</p>
                 {disp_gps} Goomies per second
             </div>
