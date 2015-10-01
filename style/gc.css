@@ -18,14 +18,26 @@ html, body{
 div.generator{
 	display: inline-block;
     background-color: #121212;
+	margin: 2px;
     border: 1px solid #e9e9e9;
     padding: 8px 20px;
     width: 240px;
+	vertical-align: top;
 }
 
 div.generator p{
     font-size: 75%;
     margin: 0;
+}
+
+div.generator > .details{
+	height: 0px;
+	overflow: hidden;
+	transition: all 0.2s ease-out;
+}
+
+div.generator:hover > .details{
+	height: 120px;
 }
 
 div.generator-pane{
@@ -80,7 +92,7 @@ span.small-cs{
 table.stats-table{
 	width: 320px;
 	margin: auto;
-	border-spacing: 8px;
+	border-spacing: 8px 0px;
 }
 
 td.stat-table-category{
@@ -104,7 +116,9 @@ td.stat-table-value{
     position: absolute;
 }
 
-
+.generator-stats{
+	transition: all 0.2s linear;
+}
 
 
 
@@ -140,4 +154,17 @@ td.stat-table-value{
 .plusMarker-leave.plusMarker-leave-active > .movable{
     top: -100px;
     transition: all 1.0s ease-out;
+}
+
+
+
+.generatorStats-enter {
+	height: 0px;
+	overflow: hidden;
+	transition: all 1.0s linear;
+}
+
+.generatorStats-enter.generatorStats-enter-active {
+	height: 60px;
+	overflow: hidden;
 }

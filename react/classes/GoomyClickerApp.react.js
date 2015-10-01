@@ -20,9 +20,7 @@ var GoomyClickerApp = React.createClass({
                     onUpdate = {this.props.onUpdate}
                 />
 				<StatsPane
-					goomies = {this.props.data["goomies"]}
-					gps = {this.props.data["gps"]}
-					playtime = {this.props.data["playtime"]}
+					data = {this.props.data}
 				/>
             </div>
         );

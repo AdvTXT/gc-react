@@ -1,12 +1,11 @@
 generators_by_ID = {};
 
-function Generator(name, base_cost, base_gps) {
+function Generator(name, display_name, base_cost, base_gps) {
 
     this.key_name = name;
+	this.display_name = display_name;
 
     this.base_gps = base_gps;
-    this.premult_gps = base_gps;
-    this.gps = base_gps;
 
     this.level = 1;
     this.level_mult = 1.0;
@@ -25,6 +24,10 @@ Generator.prototype.getCost = function(n) {
 
 Generator.prototype.getCurrentCost = function() {
     return this.getCost(this.count);
+};
+
+Generator.prototype.getGPS = function() {
+	return this.base_gps * Math.pow(1.2, this.level - 1);
 };
 
 Generator.prototype.getLevelUpCost = function() {
@@ -69,7 +72,7 @@ Generator.prototype.sell = function(n) {
 };
 
 Generator.prototype.levelUp = function(n) {
-    if (basedata.goomies < this.level_up_cost) {
+    if (basedata.goomies < this.getLevelUpCost()) {
         return false;
     }
     basedata.goomies -= this.getLevelUpCost();
@@ -83,10 +86,11 @@ Generator.prototype.setBaseCost = function(cost) {
 };
 
 generators = [
-    new Generator("cursor",               20, 0.2),
-    new Generator("youngster",           100, 1),
-    new Generator("daycare",             600, 5),
-    new Generator("reserve",            3000, 20),
-    new Generator("farm",              15000, 75),
-    new Generator("fountain",          70000, 250),
+    new Generator("cursor",     "Cursor",                  20, 0.2),
+    new Generator("youngster",  "Youngster",              100, 1),
+    new Generator("daycare",    "Daycare",                600, 5),
+    new Generator("reserve",    "Reserve",               3000, 20),
+    new Generator("farm",       "Farm",                 15000, 75),
+    new Generator("fountain",   "Goopy Fountain",       70000, 250),
+    new Generator("trench",     "Oceanic Trench",       70000, 250),
 ];

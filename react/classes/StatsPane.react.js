@@ -47,7 +47,7 @@ var StatsPane = React.createClass({
 					rows = {[
 						{
 							heading: "Play Time",
-							value: formatTimeLong(this.props.playtime),
+							value: formatTimeLong(this.props.data["playtime"]),
 						},
 					]}
 				/>
@@ -56,7 +56,11 @@ var StatsPane = React.createClass({
 					rows = {[
 						{
 							heading: "Goomies:",
-							value: reprnum(Math.floor(this.props.goomies)),
+							value: reprnum(Math.floor(this.props.data["goomies"])),
+						},
+						{
+							heading: "Total Goomies:",
+							value: reprnum(Math.floor(this.props.data["total_goomies"])),
 						},
 					]}
 				/>
