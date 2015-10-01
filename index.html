@@ -11,7 +11,6 @@
 	<link href='https://fonts.googleapis.com/css?family=Hind:400,600|Inconsolata' rel='stylesheet' type='text/css'>
 
     <script src="react/react-with-addons.js" type="text/javascript"></script>
-    <script src="react/JSXTransformer.js" type="text/javascript"></script>
 
     <script src="lib/classnames.js" type="text/javascript"></script>
     <script src="lib/reprnum.js" type="text/javascript"></script>
@@ -21,15 +20,15 @@
     <script src="js/gc.js" type="text/javascript"></script>
     <script src="js/generators.js" type="text/javascript"></script>
 
-    <script src="react/classes/GeneratorButton.react.js" type="text/jsx"></script>
-    <script src="react/classes/GeneratorPane.react.js" type="text/jsx"></script>
-    <script src="react/classes/GoomyClickerApp.react.js" type="text/jsx"></script>
-    <script src="react/classes/GoomyIndicator.react.js" type="text/jsx"></script>
-    <script src="react/classes/GoomyPane.react.js" type="text/jsx"></script>
-    <script src="react/classes/GreatGoomy.react.js" type="text/jsx"></script>
-    <script src="react/classes/PlusMarker.react.js" type="text/jsx"></script>
-    <script src="react/classes/StatsPane.react.js" type="text/jsx"></script>
-    <script src="react/classes/StatsTable.react.js" type="text/jsx"></script>
+    <script src="js/GeneratorButton.react.js" type="text/javascript"></script>
+    <script src="js/GeneratorPane.react.js" type="text/javascript"></script>
+    <script src="js/GoomyClickerApp.react.js" type="text/javascript"></script>
+    <script src="js/GoomyIndicator.react.js" type="text/javascript"></script>
+    <script src="js/GoomyPane.react.js" type="text/javascript"></script>
+    <script src="js/GreatGoomy.react.js" type="text/javascript"></script>
+    <script src="js/PlusMarker.react.js" type="text/javascript"></script>
+    <script src="js/StatsPane.react.js" type="text/javascript"></script>
+    <script src="js/StatsTable.react.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -37,24 +36,7 @@
 </div>
 </body>
 
-<script type="text/jsx">
-    var update_time = new Date();
-
-    setInterval(function () {
-        var new_update_time = new Date();
-        var delta_ms = new_update_time.getTime() - update_time.getTime();
-        update_time.setTime(new_update_time.getTime());
-
-        basedata.update(delta_ms);
-
-        React.render(
-            <GoomyClickerApp
-                data={basedata}
-                generators={generators}
-                onUpdate={onUpdate}
-            />
-        , document.getElementById("gamebox"));
-    }, 20);
+<script type="text/javascript" src="js/main.react.js">
 </script>
 
 </html>
