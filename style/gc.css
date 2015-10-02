@@ -2,7 +2,7 @@ html, body{
     margin: 0; padding: 0;
     width: 100%; height: 100%;
 
-    font-family: Hind, PT Sans, Arial, sans-serif;
+    font-family: Inconsolata, Consolas, monospace;
     background-color: #200c2d;
 	-moz-user-select: none;
 	-webkit-user-select: none;
@@ -20,21 +20,40 @@ html, body{
 
 button{
 	cursor: pointer;
+	background: #242424;
+	border: 1px solid white;
+	border-radius: 2px;
+	color: white;
+	margin: 0 6px;
+	font: inherit;
+}
+
+button.row-button{
+	position: relative;
+	top: 2px;
+}
+
+hr{
+	border: none;
+	border-top: 1px solid #c0c0c0;
 }
 
 div.generator{
 	display: inline-block;
-    background-color: #121212;
+    background-color: #454545;
 	margin: 2px;
     border: 1px solid #e9e9e9;
     padding: 8px 20px;
     width: 240px;
 	vertical-align: top;
+	position: relative;
+	overflow: hidden;
 }
 
 div.generator p{
     font-size: 75%;
     margin: 0;
+	z-index: 1;
 }
 
 div.generator > .details{
@@ -43,8 +62,24 @@ div.generator > .details{
 	transition: all 0.2s ease-out;
 }
 
+div.generator > .progress-bar{
+	position: absolute;
+	background-color: black;
+	opacity: 0.2;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	transition: right 0.2s ease-out;
+}
+
 div.generator:hover > .details{
 	height: 120px;
+}
+
+div.generator:hover > .progress-bar{
+	right: -100%;
 }
 
 div.generator-pane{
@@ -94,6 +129,14 @@ p.goomy-count{
 
 span.small-cs{
 	font-size: 75%;
+}
+
+span.disabled{
+	color: #c0c0c0;
+}
+
+span.unbuyable{
+	color: #ffc0c0;
 }
 
 table.stats-table{

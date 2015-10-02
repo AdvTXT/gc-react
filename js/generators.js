@@ -86,11 +86,16 @@ Generator.prototype.setBaseCost = function(cost) {
 };
 
 generators = [
-    new Generator("cursor",     "Cursor",                  20, 0.2),
-    new Generator("youngster",  "Youngster",              100, 1),
-    new Generator("daycare",    "Daycare",                600, 5),
-    new Generator("reserve",    "Reserve",               3000, 20),
-    new Generator("farm",       "Farm",                 15000, 75),
-    new Generator("fountain",   "Goopy Fountain",       70000, 250),
-    new Generator("trench",     "Oceanic Trench",       70000, 250),
+    new Generator("cursor",     "Cursor",                    20, 0.2),  // 100 seconds
+    new Generator("youngster",  "Youngster",                100, 1),  // 100 seconds
+    new Generator("daycare",    "Daycare",                  600, 5),  // 120 seconds
+    new Generator("reserve",    "Reserve",                 3000, 20),  // 150 seconds
+    new Generator("farm",       "Farm",                   15000, 75),  // 200 seconds
+    new Generator("fountain",   "Goopy Fountain",         70000, 250),  // 280 seconds
+    new Generator("trench",     "Oceanic Trench",        400000, 1000),  // 400 seconds
+    new Generator("arceus",     "Enslaved Arceus",      2400000, 4000),  // 600 seconds
+    new Generator("church",     "Church of Goomy",     15000000, 15000),  // 1000 seconds
+    new Generator("cloninglab", "Cloning Lab",        200000000, 90000),  // 2222 seconds
+    new Generator("rngabuser",  "RNG Abuser",        4294967296, 1048576),  // 4096 seconds
+    new Generator("collider",   "Photon Collider",    3.0000e12, 299792458),  // ~10000 seconds
 ];

@@ -5,6 +5,7 @@ var GreatGoomy = React.createClass({displayName: "GreatGoomy",
     },
 
     _onMouseDown: function(e) {
+		e.preventDefault(); // stop right clicks from accidentally opening up the menu
         var rect = this.getDOMNode().getBoundingClientRect();
         var x = e.clientX - rect.left, y = e.clientY - rect.top;
         var random_r = Math.pow(Math.random(), 2) * 50, random_theta = Math.random() * Math.PI * 2;

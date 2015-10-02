@@ -1,3 +1,12 @@
+function formatTimeMMSS(seconds) {
+	if (seconds >= 3600) return "--:--";
+
+	var minutes = s.pad("" + Math.floor((seconds % 3600) / 60), 2, "0");
+	var seconds = s.pad("" + Math.floor(seconds % 60), 2, "0");
+
+	return minutes + ":" + seconds;
+}
+
 var GeneratorButton = React.createClass({
 
     propTypes: {
@@ -36,6 +45,19 @@ var GeneratorButton = React.createClass({
 
     render: function() {
 		var gps = this.props.generator.getGPS();
+
+		var unbuyable = this.props.generator.getCurrentCost() > basedata.goomies;
+		var timeleft = null;
+		if (unbuyable) {
+			timeleft = (
+				<span>{" "}(
+					{formatTimeMMSS(
+						Math.ceil((this.props.generator.getCurrentCost() - basedata.goomies) / basedata.gps)
+					)}
+				)</span>
+			);
+		}
+
 		var disp_gps = (gps < 1000000) ?
 			gps.toLocaleString(lang, {minimumFractionDigits: 1}) :
 			reprnum(gps, "long");
@@ -43,19 +65,42 @@ var GeneratorButton = React.createClass({
 		var details = <div className="details">
 			<p>You own <b>{this.props.generator.count}</b> of this generator </p>
 	        <p>Each one produces <b>{disp_gps}</b> GpS </p>
-	        <p>To buy one costs <b>{reprnum(this.props.generator.getCurrentCost(), "long")}</b> Goomies </p>
-			<button onClick={this.buyItem}>Buy</button>
-			<button onClick={this.sellItem}>Sell</button>
+	        <p>To buy one costs{" "}
+				<span className={makeClass({
+					unbuyable: unbuyable
+				})}>
+					<b>{reprnum(this.props.generator.getCurrentCost(), "long")}</b> Goomies
+				</span>
+				{timeleft}
+			</p>
+			<p>
+				<button className="row-button" onClick={this.buyItem}>Buy</button>
+				<button className="row-button" onClick={this.sellItem}>Sell</button>
+			</p>
 			<hr />
-			<p>Level <b>{this.props.generator.level}</b>
-				<button onClick={this.levelUpItem}>Level up for {reprnum(this.props.generator.getLevelUpCost(), "short")}</button>
+			<p>
+				Level <b>{this.props.generator.level}</b>
+				<button onClick={this.levelUpItem}>
+					Level up for {reprnum(this.props.generator.getLevelUpCost(), "short")}
+				</button>
 			</p>
 		</div>;
 
+		var progress_bar = <div className="progress-bar" style={{
+			width: Math.max(0, 100 - (basedata.goomies / this.props.generator.getCurrentCost() * 100)) + "%"
+		}}></div>
+
         return (
-            <div className="generator" onMouseEnter={this.expand} onMouseLeave={this.contract}>
-                {this.props.generator.display_name}&nbsp;&mdash;&nbsp;{this.props.generator.count}
+            <div className="generator">
+                <span style={{zIndex: 10}} className={makeClass({
+					disabled: unbuyable
+				})}>
+					{this.props.generator.display_name}
+					&nbsp;&mdash;&nbsp;
+					{this.props.generator.count}
+				</span>
                 {details}
+				{progress_bar}
             </div>
         );
     },

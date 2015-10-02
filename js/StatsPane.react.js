@@ -55,11 +55,11 @@ var StatsPane = React.createClass({displayName: "StatsPane",
 				React.createElement(StatsTable, {
 					rows: [
 						{
-							heading: "Goomies:",
+							heading: "Goomies",
 							value: reprnum(Math.floor(this.props.data["goomies"])),
 						},
 						{
-							heading: "Total Goomies:",
+							heading: "Total Goomies",
 							value: reprnum(Math.floor(this.props.data["total_goomies"])),
 						},
 					]}

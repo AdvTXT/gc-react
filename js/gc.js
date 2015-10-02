@@ -1,23 +1,30 @@
 var basedata = {
 
-    goomies: 1e6,
-	total_goomies: 1e6,
+    goomies: 0,
+	total_goomies: 0,
 
     gpc: 1.0,
     gps: 0,
 
-	playing: true,
-	playtime: 864000000,
+	playing: false,
+	playtime: 0,
+
+	goomy_level: 1,
+	goomy_level_cap: 20,
+	goomy_exp: 0,
 
     clickOnGoomy: function() {
+		this.playing = true;
         this.goomies += this.gpc;
 		this.total_goomies += this.gpc;
+		this.gainEXP(this.goomy_level);
     },
 
     // update actual data.
     update: function(delta_ms) {
 		if (!this.playing) return;
 		this.playtime += delta_ms;
+		this.gainEXP(delta_ms * generators_by_ID["cursor"].count * 0.1);
 
 		var delta = this.gps * delta_ms / 1000.0;
 
@@ -32,6 +39,11 @@ var basedata = {
         }
         this.gps = gps;
     },
+
+	gainEXP: function() {
+		if (this.goomy_level >= this.goomy_level_cap) return;
+		this.goomy_exp += this.goomy_level;
+	}
 
 };
 
