@@ -15,6 +15,7 @@ html, body{
     height: 100%;
     color: white;
 	margin-top: 16px;
+	text-align: center;
 }
 
 
@@ -37,6 +38,18 @@ hr{
 	border: none;
 	border-top: 1px solid #c0c0c0;
 }
+
+
+
+div.game-pane{
+	display: inline-block;
+	width: 320px;
+	text-align: left;
+	vertical-align: top;
+	padding: 20px;
+}
+
+
 
 div.generator{
 	display: inline-block;
@@ -84,7 +97,6 @@ div.generator:hover > .progress-bar{
 
 div.generator-pane{
 	text-align: center;
-	padding: 20px;
 }
 
 div.goomy-pane{
@@ -94,8 +106,19 @@ div.goomy-pane{
     position: relative;
 }
 
+div.goomy-container{
+	position: relative;
+	height: 440px;
+	width: 320px;
+}
+
+div.indicator-pane{
+	text-align: center;
+}
+
 div.stats-pane{
-    text-align: center;
+	text-align: center;
+	min-height: 400px;
 }
 
 
@@ -105,18 +128,17 @@ h1{
 
 
 img.great-goomy{
-    position: relative;
+    position: absolute;
     height: 420px;
     top: 0;
-    margin-bottom: 0;
-    transition: 0.03s linear;
+	transform: translateX(-50%);
+    transition: 0.05s linear;
     cursor: pointer;
 }
 
 img.great-goomy.pressed{
 	height: 400px;
     top: 10px;
-    margin-bottom: 20px;
 }
 
 
@@ -139,9 +161,10 @@ span.unbuyable{
 	color: #ffc0c0;
 }
 
+
 table.stats-table{
 	width: 320px;
-	margin: auto;
+	margin: 1em auto;
 	border-spacing: 8px 0px;
 }
 

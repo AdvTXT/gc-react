@@ -39,8 +39,12 @@ var StatsPane = React.createClass({displayName: "StatsPane",
     },
 
     render: function() {
+
+		var level = this.props.data["goomy_level"];
+		var exp = Math.floor(this.props.data["goomy_exp"]);
+
         return (
-            React.createElement("div", {className: "stats-pane"}, 
+            React.createElement("div", {className: "game-pane stats-pane"}, 
 				React.createElement("h1", null, "Stats"), 
 
                 React.createElement(StatsTable, {
@@ -61,6 +65,19 @@ var StatsPane = React.createClass({displayName: "StatsPane",
 						{
 							heading: "Total Goomies",
 							value: reprnum(Math.floor(this.props.data["total_goomies"])),
+						},
+					]}
+				), 
+
+				React.createElement(StatsTable, {
+					rows: [
+						{
+							heading: "Experience Points",
+							value: reprnum(exp),
+						},
+						{
+							heading: "To level " + (level + 1),
+							value: reprnum(level * level * 100 - Math.floor(this.props.data["goomy_level_exp"])),
 						},
 					]}
 				)

@@ -3,7 +3,7 @@ var basedata = {
     goomies: 0,
 	total_goomies: 0,
 
-    gpc: 1.0,
+    gpc: 1,
     gps: 0,
 
 	playing: false,
@@ -11,7 +11,9 @@ var basedata = {
 
 	goomy_level: 1,
 	goomy_level_cap: 20,
+	goomy_total_level_cap: 100,
 	goomy_exp: 0,
+	goomy_level_exp: 0,
 
     clickOnGoomy: function() {
 		this.playing = true;
@@ -24,10 +26,10 @@ var basedata = {
     update: function(delta_ms) {
 		if (!this.playing) return;
 		this.playtime += delta_ms;
-		this.gainEXP(delta_ms * generators_by_ID["cursor"].count * 0.1);
+
+		this.gainEXP(delta_ms / 1000.0 * generators_by_ID["cursor"].count * 0.1);
 
 		var delta = this.gps * delta_ms / 1000.0;
-
         this.goomies += delta;
 		this.total_goomies += delta;
     },
@@ -40,10 +42,28 @@ var basedata = {
         this.gps = gps;
     },
 
-	gainEXP: function() {
+    recalcGPC: function() {
+        var gpc = this.goomy_level;
+		gpc *= Math.pow(1.1, generators_by_ID["cursor"].level - 1);
+		this.gpc = gpc;
+    },
+
+	gainEXP: function(exp) {
 		if (this.goomy_level >= this.goomy_level_cap) return;
-		this.goomy_exp += this.goomy_level;
-	}
+		this.goomy_exp += exp;
+		this.goomy_level_exp += exp;
+		while(this.levelUp());
+	},
+
+	levelUp: function() {
+		if (this.goomy_level_exp >= this.goomy_level * this.goomy_level * 100) {
+			this.goomy_level_exp -= this.goomy_level * this.goomy_level * 100;
+			this.goomy_level += 1;
+			this.recalcGPC();
+			return true;
+		}
+		else return false;
+	},
 
 };
 

@@ -5,7 +5,6 @@ var GreatGoomy = React.createClass({
     },
 
     _onMouseDown: function(e) {
-		e.preventDefault(); // stop right clicks from accidentally opening up the menu
         var rect = this.getDOMNode().getBoundingClientRect();
         var x = e.clientX - rect.left, y = e.clientY - rect.top;
         var random_r = Math.pow(Math.random(), 2) * 50, random_theta = Math.random() * Math.PI * 2;
@@ -30,16 +29,20 @@ var GreatGoomy = React.createClass({
 
     render: function() {
         return (
-            <img
-                src="img/great_goomy.png"
-                className={makeClass({
-                    "great-goomy": true,
-                    "pressed": this.state.mouseDown
-                })}
-                onMouseDown={this._onMouseDown}
-                onMouseUp={this._onMouseUp}
-                onMouseLeave={this._onMouseLeave}
-            />
+			<div className="goomy-container">
+	            <img
+	                src="img/great_goomy.png"
+	                className={makeClass({
+	                    "great-goomy": true,
+	                    "pressed": this.state.mouseDown
+	                })}
+					onDragStart={function(e){e.preventDefault();}}
+					onContextMenu={function(e){e.preventDefault();}}
+	                onMouseDown={this._onMouseDown}
+	                onMouseUp={this._onMouseUp}
+	                onMouseLeave={this._onMouseLeave}
+	            />
+			</div>
         );
     },
 

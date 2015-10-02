@@ -4,6 +4,7 @@ var GoomyPane = React.createClass({displayName: "GoomyPane",
         goomies: React.PropTypes.number,
         gps: React.PropTypes.number,
         gpc: React.PropTypes.number,
+		level: React.PropTypes.number,
         onClick: React.PropTypes.func,
         sendMessage: React.PropTypes.func,
     },
@@ -52,8 +53,9 @@ var GoomyPane = React.createClass({displayName: "GoomyPane",
                 )
             );
         }, this);
+
         return (
-            React.createElement("div", {className: "goomy-pane"}, 
+            React.createElement("div", {className: "goomy-pane game-pane"}, 
                 React.createElement(GreatGoomy, {
                     onClick: this._onClick}
                 ), 
@@ -67,7 +69,10 @@ var GoomyPane = React.createClass({displayName: "GoomyPane",
                 React.createElement(GoomyIndicator, {
                     goomies: this.props.goomies, 
                     gps: this.props.gps}
-                )
+                ), 
+				React.createElement(GoomyLevelIndicator, {
+					level: this.props.level}
+				)
             )
         );
     },

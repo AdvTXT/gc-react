@@ -16,11 +16,9 @@ var StatsTable = React.createClass({
 			rows.push(row);
 		}
         return (
-            <div className="stats-pane">
-                <table className="stats-table">
-					{rows}
-				</table>
-            </div>
+            <table className="stats-table">
+				{rows}
+			</table>
         );
     },
 

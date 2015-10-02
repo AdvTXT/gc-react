@@ -12,7 +12,7 @@ var GoomyIndicator = React.createClass({
 			reprnum(gps, "long");
 
         return (
-            <div className="stats-pane">
+            <div className="indicator-pane">
                 <p className="goomy-count">
 					{reprnum(Math.floor(this.props.goomies), "long")}
 					<img src="img/favicon.png" />

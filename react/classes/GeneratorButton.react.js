@@ -65,7 +65,7 @@ var GeneratorButton = React.createClass({
 		var details = <div className="details">
 			<p>You own <b>{this.props.generator.count}</b> of this generator </p>
 	        <p>Each one produces <b>{disp_gps}</b> GpS </p>
-	        <p>To buy one costs{" "}
+	        <p>Cost:{" "}
 				<span className={makeClass({
 					unbuyable: unbuyable
 				})}>

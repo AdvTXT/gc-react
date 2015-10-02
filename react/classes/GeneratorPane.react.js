@@ -17,7 +17,7 @@ var GeneratorPane = React.createClass({
             );
         }
         return (
-            <div className="generator-pane">
+            <div className="generator-pane game-pane">
                 {generators}
             </div>
         );

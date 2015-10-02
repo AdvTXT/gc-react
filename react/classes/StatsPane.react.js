@@ -39,8 +39,12 @@ var StatsPane = React.createClass({
     },
 
     render: function() {
+
+		var level = this.props.data["goomy_level"];
+		var exp = Math.floor(this.props.data["goomy_exp"]);
+
         return (
-            <div className="stats-pane">
+            <div className="game-pane stats-pane">
 				<h1>Stats</h1>
 
                 <StatsTable
@@ -61,6 +65,19 @@ var StatsPane = React.createClass({
 						{
 							heading: "Total Goomies",
 							value: reprnum(Math.floor(this.props.data["total_goomies"])),
+						},
+					]}
+				/>
+
+				<StatsTable
+					rows = {[
+						{
+							heading: "Experience Points",
+							value: reprnum(exp),
+						},
+						{
+							heading: "To level " + (level + 1),
+							value: reprnum(level * level * 100 - Math.floor(this.props.data["goomy_level_exp"])),
 						},
 					]}
 				/>

@@ -16,11 +16,9 @@ var StatsTable = React.createClass({displayName: "StatsTable",
 			rows.push(row);
 		}
         return (
-            React.createElement("div", {className: "stats-pane"}, 
-                React.createElement("table", {className: "stats-table"}, 
-					rows
-				)
-            )
+            React.createElement("table", {className: "stats-table"}, 
+				rows
+			)
         );
     },
 
