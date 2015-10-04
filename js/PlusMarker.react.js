@@ -16,7 +16,7 @@ var PlusMarker = React.createClass({displayName: "PlusMarker",
                 }
             }, 
                 React.createElement("div", {className: "movable"}, 
-                    "+", this.props.plus
+                    "+", Math.floor(this.props.plus)
                 )
             )
         );

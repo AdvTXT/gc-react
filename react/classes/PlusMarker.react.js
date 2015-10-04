@@ -16,7 +16,7 @@ var PlusMarker = React.createClass({
                 }}
             >
                 <div className="movable">
-                    +{this.props.plus}
+                    +{Math.floor(this.props.plus)}
                 </div>
             </div>
         );

@@ -1,6 +1,6 @@
 var update_time = new Date();
 
-setInterval(function () {
+function update() {
 	var new_update_time = new Date();
 	var delta_ms = new_update_time.getTime() - update_time.getTime();
 	update_time.setTime(new_update_time.getTime());
@@ -14,4 +14,8 @@ setInterval(function () {
 			onUpdate={onUpdate}
 		/>
 	, document.getElementById("gamebox"));
-}, 20);
+
+	setTimeout(update, 20);
+}
+
+update();
